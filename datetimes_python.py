@@ -22,3 +22,4 @@ print(f'{dt2.year}/{dt2.month}')
 print(dt.strftime("%Y/%m"))
 
 print(type(dt.strftime("%Y/%m")))
+
