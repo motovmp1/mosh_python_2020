@@ -15,3 +15,6 @@ print("days", duration.days)
 # this is a metadata for seconds
 print("seconds", duration.seconds)
 
+
+
+
