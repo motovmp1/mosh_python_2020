@@ -5,7 +5,6 @@ import time
 
 from subprocess import PIPE
 
-
 completed = subprocess.run(["ls", "-l"], stdout=PIPE)
 
 print("args", completed.args)
@@ -13,9 +12,9 @@ print("return_code", completed.returncode)
 print("std_err", completed.stderr)
 print("std_out", completed.stdout.decode())
 
-
 # always need to check is the system fail or not
-completed2 = subprocess.run(["python3", "/home/elsys/PycharmProjects/mosh_python_2020/python_run_terminal.py"], stdout=PIPE)
+completed2 = subprocess.run(["python3", "/home/elsys/PycharmProjects/mosh_python_2020/python_run_terminal.py"],
+                            stdout=PIPE, check=True)
 time.sleep(1)
 print("std_out", completed2.stdout.decode())
 print("return_code", completed2.returncode)
@@ -24,3 +23,16 @@ if completed2.returncode != 0:
 else:
     print("PASS")
 
+try:
+    # always need to check is the system fail or not
+    completed2 = subprocess.run(["python3", "python_run_terminal2.py"],
+                                stdout=PIPE, check=True)
+    time.sleep(1)
+    print("std_out", completed2.stdout.decode())
+    print("return_code", completed2.returncode)
+    # if completed2.returncode != 0:
+    #     print(completed2.stderr)
+    # else:
+    #     print("PASS")
+except subprocess.CalledProcessError as ex:
+    print("this is error: ", ex)
